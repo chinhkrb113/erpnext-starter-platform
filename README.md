@@ -1,161 +1,499 @@
-<div align="center">
-    <a href="https://frappe.io/erpnext">
-	<img src="./erpnext/public/images/v16/erpnext.svg" alt="ERPNext Logo" height="80px" width="80xp"/>
-    </a>
-    <h2>ERPNext</h2>
-    <p align="center">
-        <p>Powerful, Intuitive and Open-Source ERP</p>
-    </p>
+# ERPNext - Hệ Thống ERP Mã Nguồn Mở
 
-[![Learn on Frappe School](https://img.shields.io/badge/Frappe%20School-Learn%20ERPNext-blue?style=flat-square)](https://frappe.school)<br><br>
-[![CI](https://github.com/frappe/erpnext/actions/workflows/server-tests-mariadb.yml/badge.svg?event=schedule)](https://github.com/frappe/erpnext/actions/workflows/server-tests-mariadb.yml)
-[![docker pulls](https://img.shields.io/docker/pulls/frappe/erpnext-worker.svg)](https://hub.docker.com/r/frappe/erpnext-worker)
+**Tác giả:** Lê Thành Chỉnh  
+**Phiên bản:** 16.x (Development)  
+**Giấy phép:** GPL-3.0  
+**Đối tượng:** Developer nội bộ, Sinh viên, Open-source Contributors
 
-</div>
+---
 
-<div align="center">
-	<img src="./erpnext/public/images/v16/hero_image.png"/>
-</div>
+## 📋 Giới Thiệu
 
-<div align="center">
-	<a href="https://erpnext-demo.frappe.cloud/api/method/erpnext_demo.erpnext_demo.auth.login_demo">Live Demo</a>
-	-
-	<a href="https://frappe.io/erpnext">Website</a>
-	-
-	<a href="https://docs.frappe.io/erpnext/">Documentation</a>
-</div>
+ERPNext là hệ thống hoạch định nguồn lực doanh nghiệp (ERP) mã nguồn mở, được xây dựng trên nền tảng Frappe Framework. Dự án này giải quyết các vấn đề quản lý doanh nghiệp toàn diện bao gồm:
 
-## ERPNext
+- **Quản lý tài chính & kế toán**: Ghi nhận giao dịch, báo cáo tài chính, quản lý ngân sách
+- **Quản lý bán hàng & mua hàng**: Đơn hàng, báo giá, hóa đơn, quản lý khách hàng/nhà cung cấp
+- **Quản lý kho & sản xuất**: Theo dõi tồn kho, lập kế hoạch sản xuất, quản lý BOM
+- **Quản lý dự án & nhân sự**: Timesheet, task management, quản lý nhân viên
+- **CRM & Marketing**: Quản lý leads, campaigns, customer journey
 
-100% Open-Source ERP system to help you run your business.
+### Vấn Đề Giải Quyết
 
-### Motivation
+Thay vì sử dụng nhiều phần mềm riêng lẻ cho từng chức năng, ERPNext cung cấp một nền tảng tích hợp duy nhất, giúp:
+- Giảm chi phí phần mềm cho doanh nghiệp vừa và nhỏ
+- Tích hợp dữ liệu giữa các phòng ban
+- Tự động hóa quy trình nghiệp vụ
+- Báo cáo và phân tích dữ liệu thời gian thực
 
-Running a business is a complex task - handling invoices, tracking stock, managing personnel and even more ad-hoc activities. In a market where software is sold separately to manage each of these tasks, ERPNext does all of the above and more, for free.
+---
 
-### Key Features
+## 🏗️ Kiến Trúc & Công Nghệ
 
-- **Accounting**: All the tools you need to manage cash flow in one place, right from recording transactions to summarizing and analyzing financial reports.
-- **Order Management**: Track inventory levels, replenish stock, and manage sales orders, customers, suppliers, shipments, deliverables, and order fulfillment.
-- **Manufacturing**: Simplifies the production cycle, helps track material consumption, exhibits capacity planning, handles subcontracting, and more!
-- **Asset Management**: From purchase to perishment, IT infrastructure to equipment. Cover every branch of your organization, all in one centralized system.
-- **Projects**: Delivery both internal and external Projects on time, budget and Profitability. Track tasks, timesheets, and issues by project.
+### Stack Công Nghệ
 
-<details open>
+**Backend:**
+- Python 3.10+ (Core business logic)
+- Frappe Framework 16.x (Web framework)
+- MariaDB/PostgreSQL (Database)
+- Redis (Cache & Queue)
 
-<summary>More</summary>
-	<img src="https://erpnext.com/files/v16_bom.png"/>
-	<img src="https://erpnext.com/files/v16_stock_summary.png"/>
-	<img src="https://erpnext.com/files/v16_job_card.png"/>
-	<img src="https://erpnext.com/files/v16_tasks.png"/>
-</details>
+**Frontend:**
+- JavaScript/Vue.js (UI Components)
+- Frappe UI Library (Component system)
+- HTML/CSS/SCSS (Styling)
 
-### Under the Hood
+**Infrastructure:**
+- Nginx (Web server - Production)
+- Gunicorn (WSGI server)
+- Supervisor (Process management)
+- Docker (Containerization - Optional)
 
-- [**Frappe Framework**](https://github.com/frappe/frappe): A full-stack web application framework written in Python and Javascript. The framework provides a robust foundation for building web applications, including a database abstraction layer, user authentication, and a REST API.
-
-- [**Frappe UI**](https://github.com/frappe/frappe-ui): A Vue-based UI library, to provide a modern user interface. The Frappe UI library provides a variety of components that can be used to build single-page applications on top of the Frappe Framework.
-
-## Production Setup
-
-### Managed Hosting
-
-You can try [Frappe Cloud](https://frappecloud.com), a simple, user-friendly and sophisticated [open-source](https://github.com/frappe/press) platform to host Frappe applications with peace of mind.
-
-It takes care of installation, setup, upgrades, monitoring, maintenance and support of your Frappe deployments. It is a fully featured developer platform with an ability to manage and control multiple Frappe deployments.
-
-<div>
-	<a href="https://erpnext-demo.frappe.cloud/app/home" target="_blank">
-		<picture>
-			<source media="(prefers-color-scheme: dark)" srcset="https://frappe.io/files/try-on-fc-white.png">
-			<img src="https://frappe.io/files/try-on-fc-black.png" alt="Try on Frappe Cloud" height="28" />
-		</picture>
-	</a>
-</div>
-
-
-
-### Self-Hosted
-#### Docker
-
-Prerequisites: docker, docker-compose, git. Refer [Docker Documentation](https://docs.docker.com) for more details on Docker setup.
-
-Run following commands:
+### Kiến Trúc Hệ Thống
 
 ```
+┌─────────────────────────────────────────────────────────────┐
+│                      Client Browser                          │
+│                   (HTML/CSS/JavaScript)                      │
+└────────────────────────┬────────────────────────────────────┘
+                         │ HTTP/HTTPS
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Nginx (Reverse Proxy)                     │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Frappe Framework (Python/WSGI)                  │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │   ERPNext    │  │   Frappe     │  │   Custom     │      │
+│  │   Modules    │  │   Core       │  │   Apps       │      │
+│  └──────────────┘  └──────────────┘  └──────────────┘      │
+└────────┬──────────────────┬──────────────────┬──────────────┘
+         │                  │                  │
+         ▼                  ▼                  ▼
+┌─────────────────┐ ┌─────────────┐ ┌──────────────────┐
+│   MariaDB       │ │   Redis     │ │  File Storage    │
+│   (Database)    │ │ (Cache/Queue)│ │  (Attachments)   │
+└─────────────────┘ └─────────────┘ └──────────────────┘
+```
+
+### Luồng Xử Lý Request
+
+```
+User Request → Nginx → Frappe Router → DocType Controller 
+    → Database Query → Business Logic → Response → Client
+```
+
+---
+
+## 🚀 Hướng Dẫn Cài Đặt & Chạy
+
+### Yêu Cầu Hệ Thống
+
+- **OS:** Ubuntu 20.04+, macOS, Windows (WSL2)
+- **Python:** 3.10 hoặc cao hơn
+- **Node.js:** 18.x hoặc 20.x
+- **MariaDB:** 10.6+ hoặc PostgreSQL 12+
+- **Redis:** 6.x+
+- **RAM:** Tối thiểu 4GB (khuyến nghị 8GB+)
+- **Disk:** 10GB+ dung lượng trống
+
+### Phương Án 1: Cài Đặt Trên WSL2 (Windows)
+
+#### Bước 1: Cài Đặt WSL2 & Ubuntu
+
+```powershell
+# Cài đặt WSL2
+wsl --install
+
+# Khởi động lại máy, sau đó kiểm tra
+wsl --list --verbose
+```
+
+#### Bước 2: Cài Đặt Dependencies
+
+```bash
+# Trong WSL Ubuntu
+sudo apt update
+sudo apt install -y \
+    git python3-dev python3-pip python3-venv \
+    redis-server mariadb-server libmysqlclient-dev \
+    curl build-essential
+
+# Cài đặt Node.js
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Cài đặt Yarn
+sudo npm install -g yarn
+
+# Cài đặt Frappe Bench
+sudo pip3 install frappe-bench --break-system-packages
+```
+
+#### Bước 3: Khởi Động Services
+
+```bash
+# Khởi động MariaDB
+sudo service mariadb start
+
+# Khởi động Redis
+sudo service redis-server start
+
+# Cấu hình MariaDB (tùy chọn)
+sudo mysql_secure_installation
+```
+
+#### Bước 4: Khởi Tạo Frappe Bench
+
+```bash
+# Tạo thư mục bench
+cd ~
+bench init frappe-bench --frappe-branch version-15
+
+# Di chuyển vào thư mục bench
+cd frappe-bench
+```
+
+#### Bước 5: Tạo Site & Cài ERPNext
+
+```bash
+# Tạo site mới
+bench new-site mysite.localhost --admin-password admin
+
+# Set site làm default
+bench use mysite.localhost
+
+# Lấy ERPNext app
+bench get-app erpnext
+
+# Cài đặt ERPNext vào site
+bench --site mysite.localhost install-app erpnext
+```
+
+#### Bước 6: Khởi Động Development Server
+
+```bash
+# Khởi động bench
+bench start
+```
+
+Truy cập: `http://localhost:8000`
+- **Username:** Administrator
+- **Password:** admin
+
+### Phương Án 2: Kết Nối Database Từ Xa
+
+Nếu bạn có database server riêng:
+
+#### Bước 1: Patch Frappe để hỗ trợ db_user
+
+```bash
+# Tải patch script
+cd ~/frappe-bench
+wget https://raw.githubusercontent.com/[your-repo]/patch_frappe.py
+
+# Chạy patch
+python3 patch_frappe.py
+```
+
+#### Bước 2: Cấu hình Site Config
+
+Tạo/sửa file `~/frappe-bench/sites/mysite.localhost/site_config.json`:
+
+```json
+{
+  "db_name": "your_database_name",
+  "db_user": "your_db_username",
+  "db_password": "your_db_password",
+  "db_host": "your_db_host",
+  "db_port": 3306,
+  "encryption_key": "your_encryption_key"
+}
+```
+
+#### Bước 3: Cấu hình Common Site Config
+
+Tạo/sửa file `~/frappe-bench/sites/common_site_config.json`:
+
+```json
+{
+  "db_host": "your_db_host",
+  "db_port": 3306,
+  "redis_cache": "redis://localhost:6379",
+  "redis_queue": "redis://localhost:6379",
+  "redis_socketio": "redis://localhost:6379"
+}
+```
+
+### Phương Án 3: Docker (Khuyến Nghị cho Production)
+
+```bash
+# Clone Frappe Docker
 git clone https://github.com/frappe/frappe_docker
 cd frappe_docker
+
+# Khởi động với Docker Compose
 docker compose -f pwd.yml up -d
+
+# Truy cập: http://localhost:8080
+# Username: Administrator
+# Password: admin
 ```
 
-After a couple of minutes, site should be accessible on your localhost port: 8080. Use below default login credentials to access the site.
-- Username: Administrator
-- Password: admin
+---
 
-See [Frappe Docker](https://github.com/frappe/frappe_docker?tab=readme-ov-file#to-run-on-arm64-architecture-follow-this-instructions) for ARM based docker setup.
+## 📁 Cấu Trúc Thư Mục
 
+### Cấu Trúc Bench
 
-## Development Setup
-### Manual Install
+```
+frappe-bench/
+├── apps/                      # Các ứng dụng Frappe
+│   ├── frappe/               # Frappe Framework core
+│   └── erpnext/              # ERPNext application
+├── sites/                     # Các site instances
+│   ├── assets/               # Compiled assets (JS/CSS)
+│   ├── mysite.localhost/     # Site cụ thể
+│   │   ├── site_config.json  # Cấu hình site
+│   │   ├── private/          # Files riêng tư
+│   │   └── public/           # Files công khai
+│   └── common_site_config.json
+├── config/                    # Cấu hình bench
+├── env/                       # Python virtual environment
+├── logs/                      # Log files
+└── Procfile                   # Process definitions
+```
 
-The Easy Way: our install script for bench will install all dependencies (e.g. MariaDB). See https://github.com/frappe/bench for more details.
+### Cấu Trúc ERPNext App
 
-New passwords will be created for the ERPNext "Administrator" user, the MariaDB root user, and the frappe user (the script displays the passwords and saves them to ~/frappe_passwords.txt).
+```
+erpnext/
+├── erpnext/                   # Module chính
+│   ├── accounts/             # Module kế toán
+│   │   ├── doctype/          # Định nghĩa DocTypes
+│   │   ├── report/           # Báo cáo
+│   │   └── page/             # Custom pages
+│   ├── stock/                # Module quản lý kho
+│   ├── selling/              # Module bán hàng
+│   ├── buying/               # Module mua hàng
+│   ├── manufacturing/        # Module sản xuất
+│   ├── projects/             # Module dự án
+│   ├── crm/                  # Module CRM
+│   ├── hr/                   # Module nhân sự (nếu có)
+│   ├── public/               # Static files (JS/CSS/Images)
+│   │   ├── js/               # JavaScript files
+│   │   ├── css/              # Stylesheets
+│   │   └── images/           # Images
+│   ├── templates/            # Jinja2 templates
+│   ├── hooks.py              # App hooks & configurations
+│   ├── modules.txt           # Danh sách modules
+│   └── patches.txt           # Database patches
+├── pyproject.toml            # Python dependencies
+├── package.json              # Node.js dependencies
+└── README.md                 # Documentation
+```
 
+### Các File Quan Trọng
 
-### Local
+| File | Mô Tả |
+|------|-------|
+| `hooks.py` | Định nghĩa hooks, scheduled jobs, permissions |
+| `modules.txt` | Danh sách các module trong app |
+| `patches.txt` | Các database migration patches |
+| `pyproject.toml` | Python dependencies và build config |
+| `package.json` | Frontend dependencies |
 
-To setup the repository locally follow the steps mentioned below:
+---
 
-1. Setup bench by following the [Installation Steps](https://frappeframework.com/docs/user/en/installation) and start the server
+## 🛠️ Development Workflow
+
+### Cấu Trúc DocType
+
+DocType là đơn vị cơ bản trong Frappe, tương đương với Model trong các framework khác:
+
+```python
+# erpnext/accounts/doctype/sales_invoice/sales_invoice.py
+from frappe.model.document import Document
+
+class SalesInvoice(Document):
+    def validate(self):
+        # Business logic validation
+        self.calculate_totals()
+    
+    def on_submit(self):
+        # Actions khi submit document
+        self.update_stock()
+        self.make_gl_entries()
+```
+
+### Tạo Module Mới
+
+```bash
+# Tạo module mới
+bench new-app my_custom_app
+
+# Thêm vào site
+bench --site mysite.localhost install-app my_custom_app
+
+# Tạo DocType mới (qua UI hoặc CLI)
+bench --site mysite.localhost console
+>>> frappe.new_doc("DocType", doctype="My Custom DocType")
+```
+
+### Build & Deploy
+
+```bash
+# Build assets
+bench build --app erpnext
+
+# Clear cache
+bench --site mysite.localhost clear-cache
+
+# Migrate database
+bench --site mysite.localhost migrate
+
+# Restart services
+bench restart
+```
+
+### Testing
+
+```bash
+# Chạy tests
+bench --site mysite.localhost run-tests --app erpnext
+
+# Chạy test cho module cụ thể
+bench --site mysite.localhost run-tests --app erpnext --module accounts
+
+# Chạy test cho DocType cụ thể
+bench --site mysite.localhost run-tests --doctype "Sales Invoice"
+```
+
+---
+
+## 🤝 Đóng Góp & Phát Triển
+
+### Quy Trình Đóng Góp
+
+1. **Fork Repository**
+   ```bash
+   # Fork trên GitHub, sau đó clone
+   git clone https://github.com/your-username/erpnext.git
+   cd erpnext
    ```
-   bench start
+
+2. **Tạo Branch Mới**
+   ```bash
+   git checkout -b feature/ten-tinh-nang-moi
    ```
 
-2. In a separate terminal window, run the following commands:
-   ```
-   # Create a new site
-   bench new-site erpnext.localhost
-   ```
-
-3. Get the ERPNext app and install it
-   ```
-   # Get the ERPNext app
-   bench get-app https://github.com/frappe/erpnext
-
-   # Install the app
-   bench --site erpnext.localhost install-app erpnext
+3. **Phát Triển & Test**
+   ```bash
+   # Viết code
+   # Chạy tests
+   bench --site mysite.localhost run-tests --app erpnext
+   
+   # Kiểm tra code style
+   ruff check .
    ```
 
-4. Open the URL `http://erpnext.localhost:8000/app` in your browser, you should see the app running
+4. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "feat: thêm tính năng XYZ"
+   git push origin feature/ten-tinh-nang-moi
+   ```
 
-## Learning and community
+5. **Tạo Pull Request**
+   - Mở PR trên GitHub
+   - Mô tả chi tiết thay đổi
+   - Đính kèm screenshots nếu có UI changes
 
-1. [Frappe School](https://school.frappe.io) - Learn Frappe Framework and ERPNext from the various courses by the maintainers or from the community.
-2. [Official documentation](https://docs.erpnext.com/) - Extensive documentation for ERPNext.
-3. [Discussion Forum](https://discuss.frappe.io/c/erpnext/6) - Engage with community of ERPNext users and service providers.
-4. [Telegram Group](https://erpnext_public.t.me) - Get instant help from huge community of users.
+### Coding Standards
 
+**Python:**
+- Tuân thủ PEP 8
+- Sử dụng type hints khi có thể
+- Docstrings cho functions/classes
+- Line length: 110 characters
 
-## Contributing
+**JavaScript:**
+- Sử dụng ES6+ syntax
+- Camel case cho variables/functions
+- JSDoc comments cho functions
 
-1. [Issue Guidelines](https://github.com/frappe/erpnext/wiki/Issue-Guidelines)
-1. [Report Security Vulnerabilities](https://erpnext.com/security)
-1. [Pull Request Requirements](https://github.com/frappe/erpnext/wiki/Contribution-Guidelines)
-2. [Translations](https://crowdin.com/project/frappe)
+**Git Commit Messages:**
+```
+feat: thêm tính năng mới
+fix: sửa lỗi
+docs: cập nhật documentation
+style: format code
+refactor: tái cấu trúc code
+test: thêm/sửa tests
+chore: cập nhật dependencies
+```
 
+### Tài Liệu Tham Khảo
 
-## Logo and Trademark Policy
+- **Frappe Framework Docs:** https://frappeframework.com/docs
+- **ERPNext User Manual:** https://docs.erpnext.com
+- **API Documentation:** https://frappeframework.com/docs/user/en/api
+- **Forum:** https://discuss.frappe.io
 
-Please read our [Logo and Trademark Policy](TRADEMARK_POLICY.md).
+### Liên Hệ & Hỗ Trợ
 
-<br />
-<br />
-<div align="center" style="padding-top: 0.75rem;">
-	<a href="https://frappe.io" target="_blank">
-		<picture>
-			<source media="(prefers-color-scheme: dark)" srcset="https://frappe.io/files/Frappe-white.png">
-			<img src="https://frappe.io/files/Frappe-black.png" alt="Frappe Technologies" height="28"/>
-		</picture>
-	</a>
-</div>
+- **Maintainer:** Lê Thành Chỉnh
+- **Email:** [your-email@example.com]
+- **Issues:** https://github.com/frappe/erpnext/issues
+- **Discussions:** https://discuss.frappe.io/c/erpnext
+
+---
+
+## 📝 Ghi Chú Quan Trọng
+
+### Troubleshooting
+
+**Lỗi kết nối database:**
+```bash
+# Kiểm tra MariaDB đang chạy
+sudo service mariadb status
+
+# Kiểm tra Redis
+sudo service redis-server status
+
+# Xem logs
+tail -f ~/frappe-bench/sites/mysite.localhost/logs/web.log
+```
+
+**Lỗi permission:**
+```bash
+# Fix permissions
+chmod -R 755 ~/frappe-bench/sites
+```
+
+**Clear cache khi gặp lỗi lạ:**
+```bash
+bench --site mysite.localhost clear-cache
+bench restart
+```
+
+### Performance Tips
+
+- Sử dụng Redis cache cho production
+- Enable query optimization
+- Index các fields thường xuyên query
+- Sử dụng background jobs cho heavy tasks
+- Monitor với Frappe Insights
+
+---
+
+## 📄 License
+
+Dự án này được phân phối dưới giấy phép **GNU General Public License v3.0**.
+
+Copyright © 2025 Lê Thành Chỉnh
+
+---
+
+**Happy Coding! 🚀**
