@@ -1,4 +1,4 @@
-# ERPNext - Hệ Thống ERP Mã Nguồn Mở
+# ERPNext - Hệ Thống ERP
 
 **Tác giả:** Lê Thành Chỉnh  
 **Phiên bản:** 16.x (Development)  
