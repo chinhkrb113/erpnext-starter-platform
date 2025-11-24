@@ -1,6 +1,6 @@
 # ERPNext - Hệ Thống ERP
 
-**Tác giả:** frappe/erpnext and Lê Thành Chỉnh contributed
+**Tác giả:** frappe/erpnext and Lê Thành Chỉnh contributed 
 **Phiên bản:** 16.x (Development)  
 **Giấy phép:** GPL-3.0  
 **Đối tượng:** Developer nội bộ, Sinh viên, Open-source Contributors
